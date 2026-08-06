@@ -1,0 +1,70 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 865 >>
+stream
+BT
+/F1 26 Tf
+1 0 0 1 72 720 Tm
+(Evode Manirahari) Tj
+/F1 13 Tf
+1 0 0 1 72 692 Tm
+(Product-Minded Software & AI Engineer) Tj
+/F1 14 Tf
+1 0 0 1 72 640 Tm
+(PLACEHOLDER - this is not the real resume.) Tj
+/F1 11 Tf
+1 0 0 1 72 612 Tm
+(Replace this file with the current PDF at:) Tj
+/F1 11 Tf
+1 0 0 1 72 594 Tm
+(public/Evode-Manirahari-Resume.pdf) Tj
+/F1 11 Tf
+1 0 0 1 72 566 Tm
+(Keep the filename exactly as it is - it is linked from the) Tj
+/F1 11 Tf
+1 0 0 1 72 548 Tm
+(navigation, hero, about page, and footer.) Tj
+/F1 11 Tf
+1 0 0 1 72 520 Tm
+(Then set resumeStatus to "available" in content/profile.ts) Tj
+/F1 11 Tf
+1 0 0 1 72 502 Tm
+(to hide the pending notice across the site.) Tj
+/F1 11 Tf
+1 0 0 1 72 460 Tm
+(manirahari@sonoma.edu) Tj
+/F1 11 Tf
+1 0 0 1 72 442 Tm
+(github.com/Evode-Manirahari) Tj
+/F1 11 Tf
+1 0 0 1 72 424 Tm
+(linkedin.com/in/evodemanirahari/) Tj
+ET
+
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1227
+%%EOF

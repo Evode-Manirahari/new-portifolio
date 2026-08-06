@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens
+   ------------------------------------------------------------------ */
+
+:root {
+  --background: #f2efe7;
+  --foreground: #11110f;
+  /* Darkened from #74716a so muted text clears 4.5:1 on both the background
+     (5.22:1) and the surface tint (4.77:1). */
+  --muted: #66635c;
+  --line: rgba(17, 17, 15, 0.18);
+  --line-soft: rgba(17, 17, 15, 0.09);
+  /* Brand accent — rules, borders, and graphics only. */
+  --accent: #ff4f1f;
+  /* Accent for text. #ff4f1f is 2.86:1 on the background and fails at the
+     small sizes the accent is used at; this clears 5.12:1 / 4.68:1. */
+  --accent-ink: #b8360a;
+  --surface: #e9e5dc;
+  --inverse: #10100e;
+  --inverse-text: #f4f1e9;
+
+  --text-display: clamp(4.5rem, 14vw, 13rem);
+  --text-hero: clamp(2.6rem, 6vw, 6rem);
+  --text-section: clamp(2.2rem, 4.5vw, 4.8rem);
+  --text-project: clamp(2rem, 4vw, 4.2rem);
+  --text-body-large: clamp(1.15rem, 1.8vw, 1.6rem);
+  --text-body: clamp(1rem, 1.2vw, 1.2rem);
+  --text-meta: 0.75rem;
+
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --measure: 62ch;
+
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-surface: var(--surface);
+  --color-inverse: var(--inverse);
+  --color-inverse-text: var(--inverse-text);
+
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+
+  --breakpoint-xs: 26.875rem;
+}
+
+/* An inverse block re-declares the tokens, so every utility that reads
+   them (bg-background, text-foreground, border-line …) flips with it. */
+.inverse {
+  --background: var(--inverse);
+  --foreground: var(--inverse-text);
+  --muted: rgba(244, 241, 233, 0.6);
+  /* On near-black the brand accent is 5.8:1, so text can use it directly. */
+  --accent-ink: var(--accent);
+  --line: rgba(244, 241, 233, 0.2);
+  --line-soft: rgba(244, 241, 233, 0.1);
+  --surface: #1a1a17;
+  background-color: var(--background);
+  color: var(--foreground);
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+
+* {
+  min-width: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ------------------------------------------------------------------
+   Type scale
+   ------------------------------------------------------------------ */
+
+.t-display,
+.t-hero,
+.t-section,
+.t-project {
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.t-display {
+  font-size: var(--text-display);
+  letter-spacing: -0.045em;
+}
+.t-hero {
+  font-size: var(--text-hero);
+}
+.t-section {
+  font-size: var(--text-section);
+}
+.t-project {
+  font-size: var(--text-project);
+}
+
+.t-body-large {
+  font-size: var(--text-body-large);
+  line-height: 1.42;
+  letter-spacing: -0.012em;
+}
+
+.t-body {
+  font-size: var(--text-body);
+  line-height: 1.62;
+}
+
+.t-meta {
+  font-size: var(--text-meta);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.t-serif {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+/* ------------------------------------------------------------------
+   Editorial primitives
+   ------------------------------------------------------------------ */
+
+.rule {
+  border-top: 1px solid var(--line);
+}
+
+.rule-soft {
+  border-top: 1px solid var(--line-soft);
+}
+
+/* Underline that draws in on hover, sits still for reduced motion. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: 0.08em;
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+.arrow-link .arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.arrow-link:hover .arrow,
+.arrow-link:focus-visible .arrow {
+  transform: translate(0.22em, -0.22em);
+}
+
+/* ------------------------------------------------------------------
+   Motion — every animation below is disabled under reduced motion
+   ------------------------------------------------------------------ */
+
+/* The hidden state applies only when scripting is available, so content is
+   never stranded invisible if JavaScript fails or is disabled. Browsers
+   without `scripting` support simply skip the animation. */
+@media (scripting: enabled) {
+  .reveal[data-motion="rise"] {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal[data-motion="rise"][data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Image frames clip open rather than fading. The clip is applied to the
+     child, never to the observed element itself — a fully clipped node is not
+     reported as intersecting, so it would never reveal. */
+  .reveal[data-motion="clip"] > * {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal[data-motion="clip"][data-visible="true"] > * {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.85em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero type reveal: each line rises out of its own overflow mask. */
+.line-mask {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+.line-mask > span {
+  display: block;
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--line-delay, 0ms);
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-in {
+  animation: page-in 0.45s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .reveal > * {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+}
