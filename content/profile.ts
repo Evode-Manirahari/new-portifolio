@@ -6,7 +6,15 @@
  * CONTENT_REVIEW.md, not on the page.
  */
 
-export const siteUrl = "https://evode-manirahari.vercel.app";
+/**
+ * Canonical origin. Drives canonical tags, Open Graph URLs, the sitemap, and
+ * robots.txt — so it must match the domain the site is actually served from,
+ * with no trailing slash.
+ *
+ * The apex is canonical; www redirects to it. If that is ever flipped in
+ * Vercel, flip it here too, or canonicals will point at the redirecting host.
+ */
+export const siteUrl = "https://evodemanirahari.com";
 
 export const links = {
   github: "https://github.com/Evode-Manirahari",
