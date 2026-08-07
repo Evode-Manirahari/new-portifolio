@@ -180,9 +180,29 @@ The site is static and has no runtime configuration.
 1. Import the repository at [vercel.com/new](https://vercel.com/new).
 2. Framework preset: Next.js. Build `npm run build`, output `.next`. No
    environment variables.
-3. After the first deploy, set `siteUrl` in `content/profile.ts` to the final
-   URL and redeploy — it drives canonical URLs, Open Graph, the sitemap, and
-   robots.txt.
+3. `siteUrl` in `content/profile.ts` is set to `https://evodemanirahari.com`.
+   It drives canonical URLs, Open Graph, the sitemap, and robots.txt, so it
+   must match the domain actually being served.
+
+### Custom domain
+
+In Vercel: Settings → Domains → add **both** `evodemanirahari.com` and
+`www.evodemanirahari.com`, then set the **apex as primary** so www redirects
+to it. That matches `siteUrl`. If you make www primary instead, update
+`siteUrl` to match, or every canonical tag will point at a redirect.
+
+If the domain is registered elsewhere, Vercel shows the records to create:
+
+```text
+A      @      76.76.21.21
+CNAME  www    cname.vercel-dns.com
+```
+
+### Deployment protection
+
+A portfolio must be publicly reachable. Settings → Deployment Protection →
+Vercel Authentication → **Disabled**. With it enabled every URL returns a 302
+to a Vercel login page, including the custom domain.
 
 Any static host that supports Next.js works; Vercel needs no configuration.
 

@@ -176,7 +176,7 @@ a real gap a visitor can see.
 | Hero portrait | `public/images/profile/evode-manirahari.jpg` | Documentary-style photograph, 4:5. Set `available: true` in `content/media.ts`. |
 | About portrait | `public/images/profile/evode-manirahari-about.jpg` | Second photograph, 3:2. Same flag. |
 | ACT product screenshots | `public/images/projects/` | The ACT case study currently lists the five screens as text. Screenshots would strengthen it. |
-| Canonical site URL | `siteUrl` in `content/profile.ts` | Currently `https://evode-manirahari.vercel.app`. If the new deployment gets a different URL, change it here — it drives canonicals, the sitemap, robots, and Open Graph. |
+| Canonical site URL | `siteUrl` in `content/profile.ts` | Set to `https://evodemanirahari.com` (apex canonical, www redirects to it). If the served domain ever changes, change it here — it drives canonicals, the sitemap, robots, and Open Graph. |
 
 ---
 
