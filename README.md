@@ -186,6 +186,26 @@ The site is static and has no runtime configuration.
 
 Any static host that supports Next.js works; Vercel needs no configuration.
 
+### If the deploy fails with `npm error Invalid Version:`
+
+npm 11.3.0 writes two malformed entries into `package-lock.json` for sharp's
+musl platform binaries — `@img/sharp-libvips-linuxmusl-x64`, recorded as
+`{"optional": true}` with no version, resolved URL, or integrity hash. Local
+installs tolerate it; the version of npm on the build machine does not, and
+fails with an empty version string.
+
+They come back every time the lockfile is regenerated on that npm version.
+After running `npm install`, check with:
+
+```bash
+node -e "const l=require('./package-lock.json');const b=Object.entries(l.packages).filter(([k,v])=>k&&!v.version).map(([k])=>k);console.log(b.length?b:'lockfile clean')"
+```
+
+If anything is listed, delete those keys from `packages` in
+`package-lock.json` and run `npm ci` to confirm it still installs. The entries
+carry no installable information, so removing them changes nothing about what
+gets installed.
+
 ---
 
 ## GitHub profile recommendations
